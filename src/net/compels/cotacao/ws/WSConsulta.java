@@ -26,7 +26,7 @@ public class WSConsulta {
 	private static final FachadaWSSGS FACHADA = new FachadaWSSGSProxy();
 
 	private SimpleDateFormat sdfPadraoBrasileiro = new SimpleDateFormat("dd/MM/yyyy");
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMd");
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 	public Cotacao getCotacaoData(final Indice indice, final Date data) {
 		try {
@@ -47,8 +47,11 @@ public class WSConsulta {
 
 		final List<Cotacao> cotacoes = new ArrayList<Cotacao>();
 		for (WSValorSerieVO valorSerieVO : wsServiceVO[0].getValores()) {
-			final String dia = String.valueOf(valorSerieVO.getAno()) + String.valueOf(valorSerieVO.getMes()) + String.valueOf(valorSerieVO.getDia());
-			cotacoes.add(new Cotacao(getData(dia), indice, valorSerieVO.getValor().doubleValue()));
+			String dia = String.format("%0" + 2 + "d", valorSerieVO.getDia());
+			String mes = String.format("%0" + 2 + "d", valorSerieVO.getMes());
+			String ano = String.valueOf(valorSerieVO.getAno());
+			final String date = ano + mes + dia;
+			cotacoes.add(new Cotacao(getData(date), indice, valorSerieVO.getValor().doubleValue()));
 		}
 		return cotacoes;
 	}

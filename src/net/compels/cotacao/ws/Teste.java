@@ -18,9 +18,10 @@ public class Teste {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		Date date = sdf.parse("11/04/2018");
+		Date date = sdf.parse("02/10/2018");
+		Date date2 = sdf.parse("09/10/2018");
 
-		List<Cotacao> cotacaoIndicadorEconomicoList = new WSConsulta().getCotacaoPeriodo(Indice.getIndiceByCodigo(1), date, date);
+		List<Cotacao> cotacaoIndicadorEconomicoList = new WSConsulta().getCotacaoPeriodo(Indice.getIndiceByCodigo(1), date, date2);
 
 		if (cotacaoIndicadorEconomicoList != null && !cotacaoIndicadorEconomicoList.isEmpty()) {
 			for (Cotacao cotacaoIndicadorEconomico : cotacaoIndicadorEconomicoList) {
