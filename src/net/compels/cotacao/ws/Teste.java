@@ -19,7 +19,7 @@ public class Teste {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		Date date = sdf.parse("02/10/2018");
-		Date date2 = sdf.parse("09/10/2018");
+		Date date2 = sdf.parse("23/10/2018");
 
 		List<Cotacao> cotacaoIndicadorEconomicoList = new WSConsulta().getCotacaoPeriodo(Indice.getIndiceByCodigo(1), date, date2);
 
